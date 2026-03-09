@@ -127,6 +127,51 @@ npm run build
 npm start
 ```
 
+### 🐳 Docker 部署
+
+```bash
+# 拉取镜像
+docker pull ghcr.io/heyangguang/queenbee-ui:latest
+
+# 运行（连接后端）
+docker run -d --name queenbee-ui \
+  -p 3000:3000 \
+  -e NEXT_PUBLIC_API_URL=http://localhost:3777 \
+  ghcr.io/heyangguang/queenbee-ui:latest
+```
+
+**与后端一起部署（Docker Compose）：**
+
+```yaml
+# docker-compose.yml
+services:
+  queenbee:
+    image: ghcr.io/heyangguang/queenbee:latest
+    ports:
+      - "3777:3777"
+    volumes:
+      - queenbee-data:/data
+    restart: unless-stopped
+
+  queenbee-ui:
+    image: ghcr.io/heyangguang/queenbee-ui:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://queenbee:3777
+    depends_on:
+      - queenbee
+    restart: unless-stopped
+
+volumes:
+  queenbee-data:
+```
+
+```bash
+docker compose up -d
+# 打开 http://localhost:3000
+```
+
 ---
 
 ## 🛠 Tech Stack
