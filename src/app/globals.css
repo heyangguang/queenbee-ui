@@ -1,0 +1,1294 @@
+@import "tailwindcss";
+
+/* ── QueenBee Office v0.4 · Dify 风格设计系统 ── */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #dbeafe;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
+  --success: #16a34a;
+  --warning: #d97706;
+  --info: #0ea5e9;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 滚动条 ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* ── 基础动画 ── */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.2s ease-out;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.animate-dash {
+  animation: dash 1s linear infinite;
+}
+
+/* ── 状态指示灯 ── */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.status-dot-active {
+  background: var(--success);
+}
+
+.status-dot-pending {
+  background: var(--warning);
+}
+
+.status-dot-error {
+  background: var(--destructive);
+}
+
+/* ═══════════════════════════════════════════════
+   Office 动漫风动画
+   ═══════════════════════════════════════════════ */
+
+/* 走路：左右摇摆 + 上下弹跳 */
+@keyframes walk {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(0);
+  }
+
+  15% {
+    transform: translate(-50%, -50%) rotate(-3deg) translateY(-3px);
+  }
+
+  30% {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(0);
+  }
+
+  45% {
+    transform: translate(-50%, -50%) rotate(3deg) translateY(-3px);
+  }
+
+  60% {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(0);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) rotate(-2deg) translateY(-2px);
+  }
+
+  90% {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(0);
+  }
+}
+
+/* 打字：身体微前倾 + 快速抖动 */
+@keyframes typing {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scaleY(0.98) translateY(1px);
+  }
+
+  10% {
+    transform: translate(-50%, -50%) scaleY(0.97) translateY(2px);
+  }
+
+  20% {
+    transform: translate(-50%, -50%) scaleY(0.98) translateY(1px);
+  }
+
+  30% {
+    transform: translate(-50%, -50%) scaleY(0.97) translateY(1.5px);
+  }
+
+  40% {
+    transform: translate(-50%, -50%) scaleY(0.98) translateY(1px);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scaleY(0.97) translateY(2px);
+  }
+
+  60% {
+    transform: translate(-50%, -50%) scaleY(0.98) translateY(1px);
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scaleY(0.97) translateY(1.5px);
+  }
+
+  80% {
+    transform: translate(-50%, -50%) scaleY(0.98) translateY(1px);
+  }
+
+  90% {
+    transform: translate(-50%, -50%) scaleY(0.97) translateY(2px);
+  }
+}
+
+/* 呼吸：微缩放 */
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.02) translateY(-1px);
+  }
+}
+
+/* 说话：左右摇摆 */
+@keyframes speaking {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  20% {
+    transform: translate(-50%, -50%) rotate(-2deg) translateY(-1px);
+  }
+
+  40% {
+    transform: translate(-50%, -50%) rotate(1deg);
+  }
+
+  60% {
+    transform: translate(-50%, -50%) rotate(-1deg) translateY(-1px);
+  }
+
+  80% {
+    transform: translate(-50%, -50%) rotate(2deg);
+  }
+}
+
+/* 喝咖啡：缓慢浮动 + 偶尔点头 */
+@keyframes sipping {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-50%, -50%) translateY(-1px) rotate(0.5deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-2px) rotate(-0.5deg);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) translateY(-1px) rotate(0deg);
+  }
+}
+
+/* 显示器闪烁 */
+@keyframes monitor-blink {
+
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* 气泡弹出 */
+@keyframes bubble-pop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px) scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-3px) scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* 气泡淡出 */
+@keyframes bubble-fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+/* 接收弹跳 */
+@keyframes receiving-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-5px);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+
+  70% {
+    transform: translateY(-4px);
+  }
+}
+
+/* 打字点弹跳 */
+@keyframes dot-bounce {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-walk {
+  animation: walk 0.6s ease-in-out infinite;
+}
+
+.animate-typing {
+  animation: typing 0.4s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.animate-speaking {
+  animation: speaking 0.8s ease-in-out infinite;
+}
+
+.animate-sipping {
+  animation: sipping 4s ease-in-out infinite;
+}
+
+.animate-monitor-blink {
+  animation: monitor-blink 1.5s ease-in-out infinite;
+}
+
+.animate-bubble-pop {
+  animation: bubble-pop 0.35s ease-out forwards;
+}
+
+.animate-bubble-fade-out {
+  animation: bubble-fade-out 0.8s ease-in forwards;
+}
+
+.animate-receiving-bounce {
+  animation: receiving-bounce 0.6s ease-in-out;
+}
+
+/* 打字指示器 */
+.typing-indicator {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  padding: 4px 10px;
+}
+
+.typing-indicator span {
+  width: 5px;
+  height: 5px;
+  background: var(--primary);
+  display: inline-block;
+  border-radius: 50%;
+  animation: dot-bounce 1.4s ease-in-out infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+/* ── 拖拽样式 ── */
+.drag-overlay {
+  opacity: 0.85;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: rotate(2deg);
+  cursor: grabbing;
+}
+
+.drop-zone-active {
+  border: 2px dashed var(--primary);
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+}
+
+/* ── 分区地板 ── */
+.zone-work {
+  background:
+    repeating-linear-gradient(90deg, rgba(37, 99, 235, 0.03) 0px, rgba(37, 99, 235, 0.03) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, rgba(37, 99, 235, 0.03) 0px, rgba(37, 99, 235, 0.03) 1px, transparent 1px, transparent 40px);
+}
+
+.zone-meeting {
+  background:
+    repeating-linear-gradient(90deg, rgba(234, 179, 8, 0.04) 0px, rgba(234, 179, 8, 0.04) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, rgba(234, 179, 8, 0.04) 0px, rgba(234, 179, 8, 0.04) 1px, transparent 1px, transparent 40px);
+}
+
+.zone-rest {
+  background:
+    repeating-linear-gradient(90deg, rgba(34, 197, 94, 0.04) 0px, rgba(34, 197, 94, 0.04) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, rgba(34, 197, 94, 0.04) 0px, rgba(34, 197, 94, 0.04) 1px, transparent 1px, transparent 40px);
+}
+
+/* ═══════════════════════════════════════════════
+   Office 赛博朋克动画
+   ═══════════════════════════════════════════════ */
+
+/* 浮动标签 */
+@keyframes office-float {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-3px);
+  }
+}
+
+/* 角色脉冲（工作中） */
+@keyframes office-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* 角色说话 */
+@keyframes office-speak {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    transform: scale(1.03) rotate(-2deg);
+  }
+
+  75% {
+    transform: scale(1.03) rotate(2deg);
+  }
+}
+
+/* 角色呼吸（待命） */
+@keyframes office-breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+/* 打字闪烁点 */
+.office-typing-dots {
+  letter-spacing: 2px;
+  animation: office-dots-blink 1s steps(3, start) infinite;
+}
+
+@keyframes office-dots-blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* CSS 人物角色状态动画 */
+.office-char-idle {
+  animation: office-char-breathe 3s ease-in-out infinite;
+}
+
+.office-char-walk {
+  animation: office-char-walking 0.5s ease-in-out infinite;
+}
+
+.office-char-typing {
+  animation: office-char-type 0.35s ease-in-out infinite;
+}
+
+.office-char-talk {
+  animation: office-char-speaking 0.7s ease-in-out infinite;
+}
+
+@keyframes office-char-breathe {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.02) translateY(-1px);
+  }
+}
+
+@keyframes office-char-walking {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-50%, -50%) translateY(-2px) rotate(-3deg);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) translateY(-2px) rotate(3deg);
+  }
+}
+
+@keyframes office-char-type {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scaleY(0.98) translateY(1px);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scaleY(0.97) translateY(2px);
+  }
+}
+
+@keyframes office-char-speaking {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-50%, -50%) rotate(-2deg) translateY(-1px);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) rotate(2deg) translateY(-1px);
+  }
+}
+
+/* 连线渐显 */
+@keyframes office-line-fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes office-sip {
+
+  0%,
+  100% {
+    transform: rotate(-40deg) translateY(-6px);
+  }
+
+  50% {
+    transform: rotate(-28deg) translateY(-12px);
+  }
+}
+
+@keyframes office-wave {
+
+  0%,
+  100% {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+
+  50% {
+    transform: rotate(-70deg) translateY(-14px);
+  }
+}
+
+@keyframes office-swing {
+
+  0%,
+  100% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-30deg) translateY(-4px);
+  }
+}
+
+@keyframes office-stretch-arm {
+
+  0%,
+  100% {
+    transform: rotate(-25deg) translateY(-3px);
+  }
+
+  50% {
+    transform: rotate(-40deg) translateY(-4px);
+  }
+}
+
+@keyframes office-write {
+
+  0%,
+  100% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(16deg) translateY(2px);
+  }
+}
+
+@keyframes office-read {
+
+  0%,
+  100% {
+    transform: rotate(-20deg) translateY(-2px);
+  }
+
+  50% {
+    transform: rotate(-12deg) translateY(-5px);
+  }
+}
+
+@keyframes office-meditate-body {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05) translateY(-2px);
+  }
+}
+
+@keyframes office-phone {
+
+  0%,
+  100% {
+    transform: rotate(-25deg) translateY(-3px);
+  }
+
+  50% {
+    transform: rotate(-28deg) translateY(-2px);
+  }
+}
+
+@keyframes office-water {
+
+  0%,
+  100% {
+    transform: rotate(-15deg) translateY(-2px);
+  }
+
+  50% {
+    transform: rotate(-8deg) translateY(-4px);
+  }
+}
+
+/* 走路动画 —— 腿部交替前后摆动 */
+@keyframes office-walk-leg-l {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-20deg);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes office-walk-leg-r {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(15deg);
+  }
+
+  75% {
+    transform: rotate(-20deg);
+  }
+}
+
+/* 走路动画 —— 手臂交替摆动（与腿反向） */
+@keyframes office-walk-arm-l {
+
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes office-walk-arm-r {
+
+  0%,
+  100% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   等距 3D (Isometric) 样式系统
+   ═══════════════════════════════════════════════ */
+
+/* 等距场景容器 */
+.iso-scene {
+  transform: rotateX(60deg) rotateZ(-45deg);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+/* 通用 3D 盒子 */
+.iso-box {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* 盒子顶面 */
+.iso-top {
+  position: absolute;
+  transform: translateZ(var(--box-h, 20px));
+}
+
+/* 盒子前面（面向右下方） */
+.iso-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: bottom;
+  transform: rotateX(-90deg);
+  height: var(--box-h, 20px);
+}
+
+/* 盒子侧面（面向左下方） */
+.iso-side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  transform-origin: right;
+  transform: rotateY(90deg);
+  width: var(--box-h, 20px);
+}
+
+/* 地板瓷砖纹理 */
+.iso-floor-tile {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* 角色反变换（在等距场景中保持正面） */
+.iso-char-upright {
+  transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+/* 角色投影阴影 */
+.iso-shadow {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 10px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.35) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 3D 物品浮动动画 */
+@keyframes iso-float {
+
+  0%,
+  100% {
+    transform: translateZ(var(--box-h, 20px)) translateY(0);
+  }
+
+  50% {
+    transform: translateZ(var(--box-h, 20px)) translateY(-2px);
+  }
+}
+
+/* 地板区域发光 */
+.iso-zone-glow {
+  box-shadow: inset 0 0 40px rgba(56, 189, 248, 0.05);
+}
+
+/* 等距场景内的角色状态动画覆写 */
+.iso-scene .office-char-idle {
+  animation: iso-char-breathe 3s ease-in-out infinite;
+}
+
+.iso-scene .office-char-walk {
+  animation: iso-char-walking 0.5s ease-in-out infinite;
+}
+
+.iso-scene .office-char-typing {
+  animation: iso-char-type 0.35s ease-in-out infinite;
+}
+
+.iso-scene .office-char-talk {
+  animation: iso-char-speaking 0.7s ease-in-out infinite;
+}
+
+@keyframes iso-char-breathe {
+
+  0%,
+  100% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) scale(1.02) translateY(-1px);
+  }
+}
+
+@keyframes iso-char-walking {
+
+  0%,
+  100% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) translateY(-2px) rotate(-3deg);
+  }
+
+  75% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) translateY(-2px) rotate(3deg);
+  }
+}
+
+@keyframes iso-char-type {
+
+  0%,
+  100% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) scaleY(0.98) translateY(1px);
+  }
+
+  50% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) scaleY(0.97) translateY(2px);
+  }
+}
+
+@keyframes iso-char-speaking {
+
+  0%,
+  100% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) rotate(0deg);
+  }
+
+  25% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) rotate(-2deg) translateY(-1px);
+  }
+
+  75% {
+    transform: rotateZ(45deg) rotateX(-60deg) translate(-50%, -50%) rotate(2deg) translateY(-1px);
+  }
+}
+
+/* ═══════════════════════════════════════
+   宠物动画系统 — 缓慢平滑版
+   ═══════════════════════════════════════ */
+
+/* 🐕 小狗 — 缓慢平滑移动，20 秒一圈 */
+.office-dog-chaos {
+  animation: office-dog-run 20s ease-in-out infinite;
+}
+
+@keyframes office-dog-run {
+  0% {
+    transform: translate(0, 0) scaleX(1);
+  }
+
+  10% {
+    transform: translate(120px, -50px) scaleX(1);
+  }
+
+  20% {
+    transform: translate(220px, 30px) scaleX(-1);
+  }
+
+  30% {
+    transform: translate(100px, 80px) scaleX(-1);
+  }
+
+  35% {
+    transform: translate(100px, 80px) scaleX(-1) scaleY(0.9);
+  }
+
+  40% {
+    transform: translate(100px, 80px) scaleX(-1);
+  }
+
+  50% {
+    transform: translate(-80px, 30px) scaleX(-1);
+  }
+
+  60% {
+    transform: translate(-160px, -60px) scaleX(1);
+  }
+
+  70% {
+    transform: translate(-60px, -100px) scaleX(1);
+  }
+
+  75% {
+    transform: translate(50px, -50px) scaleX(1) scale(3);
+  }
+
+  80% {
+    transform: translate(150px, 0px) scaleX(1) scale(2.5);
+  }
+
+  82% {
+    transform: translate(180px, 20px) scaleX(-1) scale(1.8);
+  }
+
+  90% {
+    transform: translate(60px, -20px) scaleX(-1);
+  }
+
+  100% {
+    transform: translate(0, 0) scaleX(1);
+  }
+}
+
+/* 🐈 小猫 — 缓慢平滑移动，17 秒循环 */
+.office-cat-chaos {
+  animation: office-cat-run 17s ease-in-out infinite;
+}
+
+@keyframes office-cat-run {
+  0% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+
+  12% {
+    transform: translate(-130px, 60px) scaleX(-1);
+  }
+
+  22% {
+    transform: translate(-230px, 10px) scaleX(1);
+  }
+
+  32% {
+    transform: translate(-120px, -70px) scaleX(1);
+  }
+
+  38% {
+    transform: translate(-120px, -70px) scaleX(1) scaleY(0.7);
+  }
+
+  45% {
+    transform: translate(-120px, -70px) scaleX(1) scaleY(0.7);
+  }
+
+  48% {
+    transform: translate(-120px, -70px) scaleX(1);
+  }
+
+  58% {
+    transform: translate(40px, -40px) scaleX(1);
+  }
+
+  68% {
+    transform: translate(140px, 30px) scaleX(-1);
+  }
+
+  73% {
+    transform: translate(180px, -10px) scaleX(-1) scale(3.5) rotate(5deg);
+  }
+
+  77% {
+    transform: translate(130px, 30px) scaleX(-1) scale(2.8) rotate(-3deg);
+  }
+
+  80% {
+    transform: translate(80px, 50px) scaleX(-1) scale(2);
+  }
+
+  90% {
+    transform: translate(-30px, 20px) scaleX(-1);
+  }
+
+  100% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+}
+
+/* 🦵 走路腿部摆动 */
+.office-pet-legs {
+  animation: office-leg-walk 0.5s ease-in-out infinite;
+}
+
+.office-pet-legs-alt {
+  animation: office-leg-walk 0.5s ease-in-out infinite reverse;
+}
+
+@keyframes office-leg-walk {
+  0% {
+    transform: rotate(-12deg);
+  }
+
+  50% {
+    transform: rotate(12deg);
+  }
+
+  100% {
+    transform: rotate(-12deg);
+  }
+}
+
+/* 💢 狂暴图标 — 每 20 秒闪现一次 */
+.office-rage-icon {
+  animation: office-rage-flash 20s ease-in-out infinite;
+}
+
+@keyframes office-rage-flash {
+
+  0%,
+  72% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  75% {
+    opacity: 1;
+    transform: scale(1.5) rotate(-10deg);
+  }
+
+  77% {
+    opacity: 1;
+    transform: scale(2) rotate(12deg);
+  }
+
+  80% {
+    opacity: 1;
+    transform: scale(1.8) rotate(-5deg);
+  }
+
+  83% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* 小狗：摇尾巴 */
+.office-tail-wag {
+  animation: office-tail-wag 0.6s ease-in-out infinite;
+}
+
+@keyframes office-tail-wag {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(15deg);
+  }
+
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+/* 小狗：呼呼 zzz 浮动 */
+.office-zzz {
+  animation: office-zzz-float 2.5s ease-in-out infinite;
+}
+
+@keyframes office-zzz-float {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(-4px) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* 小猫：尾巴左右摆动 */
+.office-cat-tail {
+  animation: office-cat-tail-swing 1.2s ease-in-out infinite;
+}
+
+@keyframes office-cat-tail-swing {
+
+  0%,
+  100% {
+    transform: rotate(-30deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+/* 毛线球：轻微滚动 */
+.office-yarn-roll {
+  animation: office-yarn-roll 2s ease-in-out infinite;
+}
+
+@keyframes office-yarn-roll {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateX(3px) rotate(30deg);
+  }
+
+  75% {
+    transform: translateX(-2px) rotate(-20deg);
+  }
+}
+
+/* 鱼缸：鱼左右游 */
+.office-fish-swim {
+  animation: office-fish-lr 3s ease-in-out infinite;
+}
+
+@keyframes office-fish-lr {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+.office-fish-swim-r {
+  animation: office-fish-rl 3.5s ease-in-out infinite;
+}
+
+@keyframes office-fish-rl {
+
+  0%,
+  100% {
+    transform: translateX(0) scaleX(-1);
+  }
+
+  50% {
+    transform: translateX(-8px) scaleX(-1);
+  }
+}
+
+/* 鱼缸：气泡上升 */
+.office-bubble-rise {
+  animation: office-bubble-up 2s ease-in infinite;
+}
+
+@keyframes office-bubble-up {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+}
