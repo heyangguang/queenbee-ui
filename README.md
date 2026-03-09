@@ -12,7 +12,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-yellow?style=for-the-badge)](LICENSE)
 
-**QueenBee Workstation 是 [QueenBee](https://github.com/queenbee-ai/queenbee) 多 Agent 引擎的 Web 管理界面。** 实时监控 Agent 状态、管理 Team 协作、查看消息队列、配置技能与记忆——通过一个高密度的 Dashboard 掌控整个 Agent 集群。
+**QueenBee Workstation 是 [QueenBee](https://github.com/heyangguang/queenbee) 多 Agent 引擎的 Web 管理界面。** 实时监控 Agent 状态、管理 Team 协作、查看消息队列、配置技能与记忆——通过一个高密度的 Dashboard 掌控整个 Agent 集群。
 
 [Getting Started](#-getting-started) · [Features](#-features) · [Tech Stack](#-tech-stack) · [Contributing](#-contributing)
 
@@ -91,13 +91,13 @@
 
 - **Node.js** 20+
 - **npm** 10+
-- 运行中的 [QueenBee 后端](https://github.com/queenbee-ai/queenbee)（默认 `localhost:9876`）
+- 运行中的 [QueenBee 后端](https://github.com/heyangguang/queenbee)（默认 `localhost:9876`）
 
 ### 安装
 
 ```bash
 # 克隆仓库
-git clone https://github.com/queenbee-ai/queenbee-ui.git
+git clone https://github.com/heyangguang/queenbee-ui.git
 cd queenbee-ui
 
 # 安装依赖
@@ -230,8 +230,8 @@ npm run lint
 
 | 项目 | 说明 |
 |:-----|:-----|
-| [queenbee](https://github.com/queenbee-ai/queenbee) | 🐝 Go 后端引擎 — 消息队列 + Agent 调度 |
-| [queenbee-ui](https://github.com/queenbee-ai/queenbee-ui) | 🖥 本仓库 — Web 管理界面 |
+| [queenbee](https://github.com/heyangguang/queenbee) | 🐝 Go 后端引擎 — 消息队列 + Agent 调度 |
+| [queenbee-ui](https://github.com/heyangguang/queenbee-ui) | 🖥 本仓库 — Web 管理界面 |
 
 ---
 
@@ -239,6 +239,6 @@ npm run lint
 
 **Built with 🐝 by the QueenBee Community**
 
-[⭐ Star us on GitHub](https://github.com/queenbee-ai/queenbee-ui) — 你的支持是我们的动力！
+[⭐ Star us on GitHub](https://github.com/heyangguang/queenbee-ui) — 你的支持是我们的动力！
 
 </div>
