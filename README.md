@@ -12,6 +12,8 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-yellow?style=for-the-badge)](LICENSE)
 
+**中文 | [English](README_EN.md) | [日本語](README_JA.md)**
+
 **QueenBee Workstation 是 [QueenBee](https://github.com/heyangguang/queenbee) 多 Agent 引擎的 Web 管理界面。** 实时监控 Agent 状态、管理 Team 协作、查看消息队列、配置技能与记忆——通过一个高密度的 Dashboard 掌控整个 Agent 集群。
 
 [Getting Started](#-getting-started) · [Features](#-features) · [Tech Stack](#-tech-stack) · [Contributing](#-contributing)
