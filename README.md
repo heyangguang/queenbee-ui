@@ -174,6 +174,35 @@ docker compose up -d
 
 ---
 
+## 🔗 连接后端
+
+前端通过 `NEXT_PUBLIC_API_URL` 环境变量连接 QueenBee 后端。
+
+| 配置项 | 默认值 | 说明 |
+|:------|:------|:-----|
+| `NEXT_PUBLIC_API_URL` | `http://localhost:3777` | 后端 API 地址 |
+| 前端端口 | `3000` | Next.js 默认端口 |
+
+> **本地开发零配置**：后端 `queenbee start` → 监听 `3777`，前端 `npm run dev` → 监听 `3000`，默认即可连通。
+
+### 修改连接地址
+
+```bash
+# 方式一：环境变量
+NEXT_PUBLIC_API_URL=http://192.168.1.100:3777 npm run dev
+
+# 方式二：.env.local 文件
+echo "NEXT_PUBLIC_API_URL=http://your-server:3777" > .env.local
+npm run dev
+
+# 方式三：Docker 部署
+docker run -d -p 3000:3000 \
+  -e NEXT_PUBLIC_API_URL=http://your-server:3777 \
+  ghcr.io/heyangguang/queenbee-ui:latest
+```
+
+---
+
 ## 🛠 Tech Stack
 
 | 类别 | 技术 | 用途 |
