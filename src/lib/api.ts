@@ -1,7 +1,8 @@
 // QueenBee Office API 客户端
-// 对接 queenbee 后端 API (默认 http://localhost:3777)
+// 通过 Next.js rewrites 代理转发到后端（默认 http://localhost:3777）
+// 如需客户端直连后端（绕过代理），可设置 NEXT_PUBLIC_API_URL
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3777";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
 
 async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
     const res = await fetch(`${API_BASE}${path}`, {
