@@ -15,7 +15,6 @@ import {
 const PROVIDERS = [
     { id: "anthropic", name: "Anthropic", sub: "Claude", defaultModel: "sonnet" },
     { id: "openai", name: "OpenAI", sub: "Codex", defaultModel: "gpt-5.3-codex" },
-    { id: "opencode", name: "OpenCode", sub: "CLI", defaultModel: "opencode" },
     { id: "gemini", name: "Gemini", sub: "Google", defaultModel: "flash" },
 ];
 

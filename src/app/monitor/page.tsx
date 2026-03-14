@@ -29,6 +29,7 @@ const STATUS_MAP: Record<string, { label: string; color: string; icon: React.Rea
 };
 
 function formatDuration(sec: number): string {
+    sec = Math.floor(sec);
     if (sec < 60) return `${sec}s`;
     if (sec < 3600) return `${Math.floor(sec / 60)}m ${sec % 60}s`;
     return `${Math.floor(sec / 3600)}h ${Math.floor((sec % 3600) / 60)}m`;
